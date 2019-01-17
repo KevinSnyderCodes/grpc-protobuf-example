@@ -205,6 +205,20 @@ class PhoneNumber : public ::google::protobuf::Message /* @@protoc_insertion_poi
   ::std::string* release_number();
   void set_allocated_number(::std::string* number);
 
+  // string extension = 3;
+  void clear_extension();
+  static const int kExtensionFieldNumber = 3;
+  const ::std::string& extension() const;
+  void set_extension(const ::std::string& value);
+  #if LANG_CXX11
+  void set_extension(::std::string&& value);
+  #endif
+  void set_extension(const char* value);
+  void set_extension(const char* value, size_t size);
+  ::std::string* mutable_extension();
+  ::std::string* release_extension();
+  void set_allocated_extension(::std::string* extension);
+
   // .PhoneType type = 2;
   void clear_type();
   static const int kTypeFieldNumber = 2;
@@ -217,6 +231,7 @@ class PhoneNumber : public ::google::protobuf::Message /* @@protoc_insertion_poi
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
   ::google::protobuf::internal::ArenaStringPtr number_;
+  ::google::protobuf::internal::ArenaStringPtr extension_;
   int type_;
   mutable ::google::protobuf::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_address_5fbook_2faddress_5fbook_2eproto;
@@ -354,13 +369,13 @@ class Person : public ::google::protobuf::Message /* @@protoc_insertion_point(cl
   const ::google::protobuf::RepeatedPtrField< ::PhoneNumber >&
       phones() const;
 
-  // map<string, string> tags = 5;
-  int tags_size() const;
-  void clear_tags();
-  static const int kTagsFieldNumber = 5;
-  const ::google::protobuf::Map< ::std::string, ::std::string >&
+  // map<string, string> tags = 5 [deprecated = true];
+  PROTOBUF_DEPRECATED int tags_size() const;
+  PROTOBUF_DEPRECATED void clear_tags();
+  PROTOBUF_DEPRECATED static const int kTagsFieldNumber = 5;
+  PROTOBUF_DEPRECATED const ::google::protobuf::Map< ::std::string, ::std::string >&
       tags() const;
-  ::google::protobuf::Map< ::std::string, ::std::string >*
+  PROTOBUF_DEPRECATED ::google::protobuf::Map< ::std::string, ::std::string >*
       mutable_tags();
 
   // string name = 2;
@@ -403,6 +418,12 @@ class Person : public ::google::protobuf::Message /* @@protoc_insertion_point(cl
   bool isblocked() const;
   void set_isblocked(bool value);
 
+  // uint32 age = 8;
+  void clear_age();
+  static const int kAgeFieldNumber = 8;
+  ::google::protobuf::uint32 age() const;
+  void set_age(::google::protobuf::uint32 value);
+
   // @@protoc_insertion_point(class_scope:Person)
  private:
   class HasBitSetters;
@@ -419,6 +440,7 @@ class Person : public ::google::protobuf::Message /* @@protoc_insertion_point(cl
   ::google::protobuf::internal::ArenaStringPtr email_;
   ::google::protobuf::int64 id_;
   bool isblocked_;
+  ::google::protobuf::uint32 age_;
   mutable ::google::protobuf::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_address_5fbook_2faddress_5fbook_2eproto;
 };
@@ -617,6 +639,59 @@ inline void PhoneNumber::set_type(::PhoneType value) {
   // @@protoc_insertion_point(field_set:PhoneNumber.type)
 }
 
+// string extension = 3;
+inline void PhoneNumber::clear_extension() {
+  extension_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline const ::std::string& PhoneNumber::extension() const {
+  // @@protoc_insertion_point(field_get:PhoneNumber.extension)
+  return extension_.GetNoArena();
+}
+inline void PhoneNumber::set_extension(const ::std::string& value) {
+  
+  extension_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:PhoneNumber.extension)
+}
+#if LANG_CXX11
+inline void PhoneNumber::set_extension(::std::string&& value) {
+  
+  extension_.SetNoArena(
+    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:PhoneNumber.extension)
+}
+#endif
+inline void PhoneNumber::set_extension(const char* value) {
+  GOOGLE_DCHECK(value != NULL);
+  
+  extension_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:PhoneNumber.extension)
+}
+inline void PhoneNumber::set_extension(const char* value, size_t size) {
+  
+  extension_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:PhoneNumber.extension)
+}
+inline ::std::string* PhoneNumber::mutable_extension() {
+  
+  // @@protoc_insertion_point(field_mutable:PhoneNumber.extension)
+  return extension_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* PhoneNumber::release_extension() {
+  // @@protoc_insertion_point(field_release:PhoneNumber.extension)
+  
+  return extension_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void PhoneNumber::set_allocated_extension(::std::string* extension) {
+  if (extension != NULL) {
+    
+  } else {
+    
+  }
+  extension_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), extension);
+  // @@protoc_insertion_point(field_set_allocated:PhoneNumber.extension)
+}
+
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------
@@ -773,7 +848,7 @@ Person::phones() const {
   return phones_;
 }
 
-// map<string, string> tags = 5;
+// map<string, string> tags = 5 [deprecated = true];
 inline int Person::tags_size() const {
   return tags_.size();
 }
@@ -803,6 +878,20 @@ inline void Person::set_isblocked(bool value) {
   
   isblocked_ = value;
   // @@protoc_insertion_point(field_set:Person.isBlocked)
+}
+
+// uint32 age = 8;
+inline void Person::clear_age() {
+  age_ = 0u;
+}
+inline ::google::protobuf::uint32 Person::age() const {
+  // @@protoc_insertion_point(field_get:Person.age)
+  return age_;
+}
+inline void Person::set_age(::google::protobuf::uint32 value) {
+  
+  age_ = value;
+  // @@protoc_insertion_point(field_set:Person.age)
 }
 
 // -------------------------------------------------------------------

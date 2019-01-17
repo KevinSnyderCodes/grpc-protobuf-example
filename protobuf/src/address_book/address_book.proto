@@ -9,15 +9,19 @@ enum PhoneType {
 message PhoneNumber {
   string number = 1;
   PhoneType type = 2;
+  string extension = 3;
 }
 
 message Person {
+  reserved 7;
   int64 id = 1;
   string name = 2;
   string email = 3;
   repeated PhoneNumber phones = 4;
-  map<string, string> tags = 5;
+  map<string, string> tags = 5 [deprecated = true];
   bool isBlocked  = 6;
+  // string nickname = 7;
+  uint32 age = 8;
 }
 
 message AddressBook {

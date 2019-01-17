@@ -20,6 +20,10 @@ class PhoneNumber extends \Google\Protobuf\Internal\Message
      * Generated from protobuf field <code>.PhoneType type = 2;</code>
      */
     private $type = 0;
+    /**
+     * Generated from protobuf field <code>string extension = 3;</code>
+     */
+    private $extension = '';
 
     /**
      * Constructor.
@@ -29,6 +33,7 @@ class PhoneNumber extends \Google\Protobuf\Internal\Message
      *
      *     @type string $number
      *     @type int $type
+     *     @type string $extension
      * }
      */
     public function __construct($data = NULL) {
@@ -76,6 +81,28 @@ class PhoneNumber extends \Google\Protobuf\Internal\Message
     {
         GPBUtil::checkEnum($var, \PhoneType::class);
         $this->type = $var;
+
+        return $this;
+    }
+
+    /**
+     * Generated from protobuf field <code>string extension = 3;</code>
+     * @return string
+     */
+    public function getExtension()
+    {
+        return $this->extension;
+    }
+
+    /**
+     * Generated from protobuf field <code>string extension = 3;</code>
+     * @param string $var
+     * @return $this
+     */
+    public function setExtension($var)
+    {
+        GPBUtil::checkString($var, True);
+        $this->extension = $var;
 
         return $this;
     }

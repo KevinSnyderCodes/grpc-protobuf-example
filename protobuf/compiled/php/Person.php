@@ -29,13 +29,19 @@ class Person extends \Google\Protobuf\Internal\Message
      */
     private $phones;
     /**
-     * Generated from protobuf field <code>map<string, string> tags = 5;</code>
+     * Generated from protobuf field <code>map<string, string> tags = 5 [deprecated = true];</code>
      */
     private $tags;
     /**
      * Generated from protobuf field <code>bool isBlocked = 6;</code>
      */
     private $isBlocked = false;
+    /**
+     * string nickname = 7;
+     *
+     * Generated from protobuf field <code>uint32 age = 8;</code>
+     */
+    private $age = 0;
 
     /**
      * Constructor.
@@ -49,6 +55,8 @@ class Person extends \Google\Protobuf\Internal\Message
      *     @type \PhoneNumber[]|\Google\Protobuf\Internal\RepeatedField $phones
      *     @type array|\Google\Protobuf\Internal\MapField $tags
      *     @type bool $isBlocked
+     *     @type int $age
+     *           string nickname = 7;
      * }
      */
     public function __construct($data = NULL) {
@@ -145,7 +153,7 @@ class Person extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>map<string, string> tags = 5;</code>
+     * Generated from protobuf field <code>map<string, string> tags = 5 [deprecated = true];</code>
      * @return \Google\Protobuf\Internal\MapField
      */
     public function getTags()
@@ -154,7 +162,7 @@ class Person extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Generated from protobuf field <code>map<string, string> tags = 5;</code>
+     * Generated from protobuf field <code>map<string, string> tags = 5 [deprecated = true];</code>
      * @param array|\Google\Protobuf\Internal\MapField $var
      * @return $this
      */
@@ -184,6 +192,32 @@ class Person extends \Google\Protobuf\Internal\Message
     {
         GPBUtil::checkBool($var);
         $this->isBlocked = $var;
+
+        return $this;
+    }
+
+    /**
+     * string nickname = 7;
+     *
+     * Generated from protobuf field <code>uint32 age = 8;</code>
+     * @return int
+     */
+    public function getAge()
+    {
+        return $this->age;
+    }
+
+    /**
+     * string nickname = 7;
+     *
+     * Generated from protobuf field <code>uint32 age = 8;</code>
+     * @param int $var
+     * @return $this
+     */
+    public function setAge($var)
+    {
+        GPBUtil::checkUint32($var);
+        $this->age = $var;
 
         return $this;
     }

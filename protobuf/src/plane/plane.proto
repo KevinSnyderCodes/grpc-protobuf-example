@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+service Plane {
+  rpc GetPoint(Coordinates) returns (Point) {}
+  rpc PutPoints(stream Coordinates) returns (Bounds) {}
+  rpc ListPointsByBounds(Bounds) returns (stream Point) {}
+  rpc ListPoints(stream Coordinates) returns (stream Point) {}
+}
+
+message Coordinates {
+  int64 x = 1;
+  int64 y = 2;
+}
+
+message Point {
+  Coordinates coordinates = 1;
+  uint64 count = 2;
+}
+
+message Bounds {
+  Coordinates min = 1;
+  Coordinates max = 2;
+}

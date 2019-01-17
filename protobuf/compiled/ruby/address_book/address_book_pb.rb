@@ -8,6 +8,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     add_message "PhoneNumber" do
       optional :number, :string, 1
       optional :type, :enum, 2, "PhoneType"
+      optional :extension, :string, 3
     end
     add_message "Person" do
       optional :id, :int64, 1
@@ -16,6 +17,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       repeated :phones, :message, 4, "PhoneNumber"
       map :tags, :string, :string, 5
       optional :isBlocked, :bool, 6
+      optional :age, :uint32, 8
     end
     add_message "AddressBook" do
       repeated :people, :message, 1, "Person"

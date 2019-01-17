@@ -112,6 +112,7 @@ const ::google::protobuf::uint32 TableStruct_address_5fbook_2faddress_5fbook_2ep
   ~0u,  // no _weak_field_map_
   PROTOBUF_FIELD_OFFSET(::PhoneNumber, number_),
   PROTOBUF_FIELD_OFFSET(::PhoneNumber, type_),
+  PROTOBUF_FIELD_OFFSET(::PhoneNumber, extension_),
   PROTOBUF_FIELD_OFFSET(::Person_TagsEntry_DoNotUse, _has_bits_),
   PROTOBUF_FIELD_OFFSET(::Person_TagsEntry_DoNotUse, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -132,6 +133,7 @@ const ::google::protobuf::uint32 TableStruct_address_5fbook_2faddress_5fbook_2ep
   PROTOBUF_FIELD_OFFSET(::Person, phones_),
   PROTOBUF_FIELD_OFFSET(::Person, tags_),
   PROTOBUF_FIELD_OFFSET(::Person, isblocked_),
+  PROTOBUF_FIELD_OFFSET(::Person, age_),
   ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::AddressBook, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -141,9 +143,9 @@ const ::google::protobuf::uint32 TableStruct_address_5fbook_2faddress_5fbook_2ep
 };
 static const ::google::protobuf::internal::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
   { 0, -1, sizeof(::PhoneNumber)},
-  { 7, 14, sizeof(::Person_TagsEntry_DoNotUse)},
-  { 16, -1, sizeof(::Person)},
-  { 27, -1, sizeof(::AddressBook)},
+  { 8, 15, sizeof(::Person_TagsEntry_DoNotUse)},
+  { 17, -1, sizeof(::Person)},
+  { 29, -1, sizeof(::AddressBook)},
 };
 
 static ::google::protobuf::Message const * const file_default_instances[] = {
@@ -160,21 +162,22 @@ static ::google::protobuf::Message const * const file_default_instances[] = {
 };
 
 const char descriptor_table_protodef_address_5fbook_2faddress_5fbook_2eproto[] =
-  "\n\037address_book/address_book.proto\"7\n\013Pho"
+  "\n\037address_book/address_book.proto\"J\n\013Pho"
   "neNumber\022\016\n\006number\030\001 \001(\t\022\030\n\004type\030\002 \001(\0162\n"
-  ".PhoneType\"\260\001\n\006Person\022\n\n\002id\030\001 \001(\003\022\014\n\004nam"
-  "e\030\002 \001(\t\022\r\n\005email\030\003 \001(\t\022\034\n\006phones\030\004 \003(\0132\014"
-  ".PhoneNumber\022\037\n\004tags\030\005 \003(\0132\021.Person.Tags"
-  "Entry\022\021\n\tisBlocked\030\006 \001(\010\032+\n\tTagsEntry\022\013\n"
-  "\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\t:\0028\001\"&\n\013Address"
-  "Book\022\027\n\006people\030\001 \003(\0132\007.Person*+\n\tPhoneTy"
-  "pe\022\n\n\006MOBILE\020\000\022\010\n\004HOME\020\001\022\010\n\004WORK\020\002b\006prot"
-  "o3"
+  ".PhoneType\022\021\n\textension\030\003 \001(\t\"\307\001\n\006Person"
+  "\022\n\n\002id\030\001 \001(\003\022\014\n\004name\030\002 \001(\t\022\r\n\005email\030\003 \001("
+  "\t\022\034\n\006phones\030\004 \003(\0132\014.PhoneNumber\022#\n\004tags\030"
+  "\005 \003(\0132\021.Person.TagsEntryB\002\030\001\022\021\n\tisBlocke"
+  "d\030\006 \001(\010\022\013\n\003age\030\010 \001(\r\032+\n\tTagsEntry\022\013\n\003key"
+  "\030\001 \001(\t\022\r\n\005value\030\002 \001(\t:\0028\001J\004\010\007\020\010\"&\n\013Addre"
+  "ssBook\022\027\n\006people\030\001 \003(\0132\007.Person*+\n\tPhone"
+  "Type\022\n\n\006MOBILE\020\000\022\010\n\004HOME\020\001\022\010\n\004WORK\020\002b\006pr"
+  "oto3"
   ;
 ::google::protobuf::internal::DescriptorTable descriptor_table_address_5fbook_2faddress_5fbook_2eproto = {
   false, InitDefaults_address_5fbook_2faddress_5fbook_2eproto, 
   descriptor_table_protodef_address_5fbook_2faddress_5fbook_2eproto,
-  "address_book/address_book.proto", &assign_descriptors_table_address_5fbook_2faddress_5fbook_2eproto, 362,
+  "address_book/address_book.proto", &assign_descriptors_table_address_5fbook_2faddress_5fbook_2eproto, 404,
 };
 
 void AddDescriptors_address_5fbook_2faddress_5fbook_2eproto() {
@@ -213,6 +216,7 @@ class PhoneNumber::HasBitSetters {
 #if !defined(_MSC_VER) || _MSC_VER >= 1900
 const int PhoneNumber::kNumberFieldNumber;
 const int PhoneNumber::kTypeFieldNumber;
+const int PhoneNumber::kExtensionFieldNumber;
 #endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
 PhoneNumber::PhoneNumber()
@@ -228,6 +232,10 @@ PhoneNumber::PhoneNumber(const PhoneNumber& from)
   if (from.number().size() > 0) {
     number_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.number_);
   }
+  extension_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  if (from.extension().size() > 0) {
+    extension_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.extension_);
+  }
   type_ = from.type_;
   // @@protoc_insertion_point(copy_constructor:PhoneNumber)
 }
@@ -236,6 +244,7 @@ void PhoneNumber::SharedCtor() {
   ::google::protobuf::internal::InitSCC(
       &scc_info_PhoneNumber_address_5fbook_2faddress_5fbook_2eproto.base);
   number_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  extension_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   type_ = 0;
 }
 
@@ -246,6 +255,7 @@ PhoneNumber::~PhoneNumber() {
 
 void PhoneNumber::SharedDtor() {
   number_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  extension_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 
 void PhoneNumber::SetCachedSize(int size) const {
@@ -264,6 +274,7 @@ void PhoneNumber::Clear() {
   (void) cached_has_bits;
 
   number_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  extension_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   type_ = 0;
   _internal_metadata_.Clear();
 }
@@ -308,6 +319,25 @@ const char* PhoneNumber::_InternalParse(const char* begin, const char* end, void
         GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
         ::PhoneType value = static_cast<::PhoneType>(val);
         msg->set_type(value);
+        break;
+      }
+      // string extension = 3;
+      case 3: {
+        if (static_cast<::google::protobuf::uint8>(tag) != 26) goto handle_unusual;
+        ptr = Varint::Parse32Inline(ptr, &size);
+        GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
+        ctx->extra_parse_data().SetFieldName("PhoneNumber.extension");
+        auto str = msg->mutable_extension();
+        if (size > end - ptr + ::google::protobuf::internal::ParseContext::kSlopBytes) {
+          object = str;
+          str->clear();
+          str->reserve(size);
+          parser_till_end = ::google::protobuf::internal::GreedyStringParserUTF8;
+          goto len_delim_till_end;
+        }
+        GOOGLE_PROTOBUF_PARSER_ASSERT(::google::protobuf::internal::StringCheckUTF8(ptr, size, ctx));
+        ::google::protobuf::internal::InlineGreedyStringParser(str, ptr, size, ctx);
+        ptr += size;
         break;
       }
       default: {
@@ -373,6 +403,21 @@ bool PhoneNumber::MergePartialFromCodedStream(
         break;
       }
 
+      // string extension = 3;
+      case 3: {
+        if (static_cast< ::google::protobuf::uint8>(tag) == (26 & 0xFF)) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_extension()));
+          DO_(::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+            this->extension().data(), static_cast<int>(this->extension().length()),
+            ::google::protobuf::internal::WireFormatLite::PARSE,
+            "PhoneNumber.extension"));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
       default: {
       handle_unusual:
         if (tag == 0) {
@@ -416,6 +461,16 @@ void PhoneNumber::SerializeWithCachedSizes(
       2, this->type(), output);
   }
 
+  // string extension = 3;
+  if (this->extension().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->extension().data(), static_cast<int>(this->extension().length()),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "PhoneNumber.extension");
+    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
+      3, this->extension(), output);
+  }
+
   if (_internal_metadata_.have_unknown_fields()) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         _internal_metadata_.unknown_fields(), output);
@@ -447,6 +502,17 @@ void PhoneNumber::SerializeWithCachedSizes(
       2, this->type(), target);
   }
 
+  // string extension = 3;
+  if (this->extension().size() > 0) {
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+      this->extension().data(), static_cast<int>(this->extension().length()),
+      ::google::protobuf::internal::WireFormatLite::SERIALIZE,
+      "PhoneNumber.extension");
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        3, this->extension(), target);
+  }
+
   if (_internal_metadata_.have_unknown_fields()) {
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields(), target);
@@ -473,6 +539,13 @@ size_t PhoneNumber::ByteSizeLong() const {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::StringSize(
         this->number());
+  }
+
+  // string extension = 3;
+  if (this->extension().size() > 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::StringSize(
+        this->extension());
   }
 
   // .PhoneType type = 2;
@@ -512,6 +585,10 @@ void PhoneNumber::MergeFrom(const PhoneNumber& from) {
 
     number_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.number_);
   }
+  if (from.extension().size() > 0) {
+
+    extension_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.extension_);
+  }
   if (from.type() != 0) {
     set_type(from.type());
   }
@@ -543,6 +620,8 @@ void PhoneNumber::InternalSwap(PhoneNumber* other) {
   using std::swap;
   _internal_metadata_.Swap(&other->_internal_metadata_);
   number_.Swap(&other->number_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+    GetArenaNoVirtual());
+  extension_.Swap(&other->extension_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
     GetArenaNoVirtual());
   swap(type_, other->type_);
 }
@@ -609,6 +688,7 @@ const int Person::kEmailFieldNumber;
 const int Person::kPhonesFieldNumber;
 const int Person::kTagsFieldNumber;
 const int Person::kIsBlockedFieldNumber;
+const int Person::kAgeFieldNumber;
 #endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
 Person::Person()
@@ -631,8 +711,8 @@ Person::Person(const Person& from)
     email_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.email_);
   }
   ::memcpy(&id_, &from.id_,
-    static_cast<size_t>(reinterpret_cast<char*>(&isblocked_) -
-    reinterpret_cast<char*>(&id_)) + sizeof(isblocked_));
+    static_cast<size_t>(reinterpret_cast<char*>(&age_) -
+    reinterpret_cast<char*>(&id_)) + sizeof(age_));
   // @@protoc_insertion_point(copy_constructor:Person)
 }
 
@@ -642,8 +722,8 @@ void Person::SharedCtor() {
   name_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   email_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   ::memset(&id_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&isblocked_) -
-      reinterpret_cast<char*>(&id_)) + sizeof(isblocked_));
+      reinterpret_cast<char*>(&age_) -
+      reinterpret_cast<char*>(&id_)) + sizeof(age_));
 }
 
 Person::~Person() {
@@ -676,8 +756,8 @@ void Person::Clear() {
   name_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   email_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   ::memset(&id_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&isblocked_) -
-      reinterpret_cast<char*>(&id_)) + sizeof(isblocked_));
+      reinterpret_cast<char*>(&age_) -
+      reinterpret_cast<char*>(&id_)) + sizeof(age_));
   _internal_metadata_.Clear();
 }
 
@@ -760,7 +840,7 @@ const char* Person::_InternalParse(const char* begin, const char* end, void* obj
         } while ((::google::protobuf::io::UnalignedLoad<::google::protobuf::uint64>(ptr) & 255) == 34 && (ptr += 1));
         break;
       }
-      // map<string, string> tags = 5;
+      // map<string, string> tags = 5 [deprecated = true];
       case 5: {
         if (static_cast<::google::protobuf::uint8>(tag) != 42) goto handle_unusual;
         do {
@@ -787,6 +867,16 @@ const char* Person::_InternalParse(const char* begin, const char* end, void* obj
         GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
         bool value = val;
         msg->set_isblocked(value);
+        break;
+      }
+      // uint32 age = 8;
+      case 8: {
+        if (static_cast<::google::protobuf::uint8>(tag) != 64) goto handle_unusual;
+        ::google::protobuf::uint64 val;
+        ptr = Varint::Parse64(ptr, &val);
+        GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
+        ::google::protobuf::uint32 value = val;
+        msg->set_age(value);
         break;
       }
       default: {
@@ -877,7 +967,7 @@ bool Person::MergePartialFromCodedStream(
         break;
       }
 
-      // map<string, string> tags = 5;
+      // map<string, string> tags = 5 [deprecated = true];
       case 5: {
         if (static_cast< ::google::protobuf::uint8>(tag) == (42 & 0xFF)) {
           Person_TagsEntry_DoNotUse::Parser< ::google::protobuf::internal::MapField<
@@ -910,6 +1000,19 @@ bool Person::MergePartialFromCodedStream(
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    bool, ::google::protobuf::internal::WireFormatLite::TYPE_BOOL>(
                  input, &isblocked_)));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // uint32 age = 8;
+      case 8: {
+        if (static_cast< ::google::protobuf::uint8>(tag) == (64 & 0xFF)) {
+
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &age_)));
         } else {
           goto handle_unusual;
         }
@@ -977,7 +1080,7 @@ void Person::SerializeWithCachedSizes(
       output);
   }
 
-  // map<string, string> tags = 5;
+  // map<string, string> tags = 5 [deprecated = true];
   if (!this->tags().empty()) {
     typedef ::google::protobuf::Map< ::std::string, ::std::string >::const_pointer
         ConstPtr;
@@ -1031,6 +1134,11 @@ void Person::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteBool(6, this->isblocked(), output);
   }
 
+  // uint32 age = 8;
+  if (this->age() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(8, this->age(), output);
+  }
+
   if (_internal_metadata_.have_unknown_fields()) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         _internal_metadata_.unknown_fields(), output);
@@ -1080,7 +1188,7 @@ void Person::SerializeWithCachedSizes(
         4, this->phones(static_cast<int>(i)), deterministic, target);
   }
 
-  // map<string, string> tags = 5;
+  // map<string, string> tags = 5 [deprecated = true];
   if (!this->tags().empty()) {
     typedef ::google::protobuf::Map< ::std::string, ::std::string >::const_pointer
         ConstPtr;
@@ -1134,6 +1242,11 @@ void Person::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(6, this->isblocked(), target);
   }
 
+  // uint32 age = 8;
+  if (this->age() != 0) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(8, this->age(), target);
+  }
+
   if (_internal_metadata_.have_unknown_fields()) {
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields(), target);
@@ -1166,7 +1279,7 @@ size_t Person::ByteSizeLong() const {
     }
   }
 
-  // map<string, string> tags = 5;
+  // map<string, string> tags = 5 [deprecated = true];
   total_size += 1 *
       ::google::protobuf::internal::FromIntSize(this->tags_size());
   {
@@ -1204,6 +1317,13 @@ size_t Person::ByteSizeLong() const {
   // bool isBlocked = 6;
   if (this->isblocked() != 0) {
     total_size += 1 + 1;
+  }
+
+  // uint32 age = 8;
+  if (this->age() != 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::UInt32Size(
+        this->age());
   }
 
   int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
@@ -1249,6 +1369,9 @@ void Person::MergeFrom(const Person& from) {
   if (from.isblocked() != 0) {
     set_isblocked(from.isblocked());
   }
+  if (from.age() != 0) {
+    set_age(from.age());
+  }
 }
 
 void Person::CopyFrom(const ::google::protobuf::Message& from) {
@@ -1284,6 +1407,7 @@ void Person::InternalSwap(Person* other) {
     GetArenaNoVirtual());
   swap(id_, other->id_);
   swap(isblocked_, other->isblocked_);
+  swap(age_, other->age_);
 }
 
 ::google::protobuf::Metadata Person::GetMetadata() const {

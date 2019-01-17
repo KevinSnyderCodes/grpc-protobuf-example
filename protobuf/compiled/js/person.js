@@ -75,7 +75,8 @@ proto.Person.toObject = function(includeInstance, msg) {
     phonesList: jspb.Message.toObjectList(msg.getPhonesList(),
     proto.PhoneNumber.toObject, includeInstance),
     tagsMap: (f = msg.getTagsMap()) ? f.toObject(includeInstance, undefined) : [],
-    isblocked: jspb.Message.getFieldWithDefault(msg, 6, false)
+    isblocked: jspb.Message.getFieldWithDefault(msg, 6, false),
+    age: jspb.Message.getFieldWithDefault(msg, 8, 0)
   };
 
   if (includeInstance) {
@@ -138,6 +139,10 @@ proto.Person.deserializeBinaryFromReader = function(msg, reader) {
     case 6:
       var value = /** @type {boolean} */ (reader.readBool());
       msg.setIsblocked(value);
+      break;
+    case 8:
+      var value = /** @type {number} */ (reader.readUint32());
+      msg.setAge(value);
       break;
     default:
       reader.skipField();
@@ -205,6 +210,13 @@ proto.Person.serializeBinaryToWriter = function(message, writer) {
   if (f) {
     writer.writeBool(
       6,
+      f
+    );
+  }
+  f = message.getAge();
+  if (f !== 0) {
+    writer.writeUint32(
+      8,
       f
     );
   }
@@ -319,6 +331,21 @@ proto.Person.prototype.getIsblocked = function() {
 /** @param {boolean} value */
 proto.Person.prototype.setIsblocked = function(value) {
   jspb.Message.setProto3BooleanField(this, 6, value);
+};
+
+
+/**
+ * optional uint32 age = 8;
+ * @return {number}
+ */
+proto.Person.prototype.getAge = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 8, 0));
+};
+
+
+/** @param {number} value */
+proto.Person.prototype.setAge = function(value) {
+  jspb.Message.setProto3IntField(this, 8, value);
 };
 
 
